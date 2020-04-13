@@ -1,6 +1,17 @@
 document.addEventListener("DOMContentLoaded", event => {
    const app = firebase.app();
-   console.log(app)
+
+   const db = firebase.firestore();
+
+   const post = db.collection('asignaturas').doc('ruuzn0XpBztWyVLTHixc');
+   
+   post.get()
+   .then(doc => {
+      const data = doc.data();
+
+      document.writeln(`<h2> ${data.nombreasignatura} <h2>`);
+
+   });
 });
 
 function googleLogin() {
