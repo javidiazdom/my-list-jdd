@@ -1,0 +1,19 @@
+<svg width="21" height="18" viewBox="0 0 21 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="0.5" y="1.5" width="20" height="16" rx="1.5" stroke="#878787"/>
+<line y1="5.5" x2="21" y2="5.5" stroke="#878787"/>
+<line x1="5.5" y1="3" x2="5.5" stroke="#878787"/>
+<line x1="16.5" y1="3" x2="16.5" y2="-3.11632e-08" stroke="#878787"/>
+<rect x="10" y="8" width="1" height="1" fill="#878787"/>
+<rect x="13" y="14" width="1" height="1" fill="#878787"/>
+<rect x="10" y="14" width="1" height="1" fill="#878787"/>
+<rect x="7" y="14" width="1" height="1" fill="#878787"/>
+<rect x="4" y="14" width="1" height="1" fill="#878787"/>
+<rect x="16" y="11" width="1" height="1" fill="#878787"/>
+<rect x="13" y="11" width="1" height="1" fill="#878787"/>
+<rect x="10" y="11" width="1" height="1" fill="#878787"/>
+<rect x="7" y="11" width="1" height="1" fill="#878787"/>
+<rect x="4" y="11" width="1" height="1" fill="#878787"/>
+<rect x="16" y="8" width="1" height="1" fill="#878787"/>
+<rect x="13" y="8" width="1" height="1" fill="#878787"/>
+<rect x="7" y="8" width="1" height="1" fill="#878787"/>
+</svg>

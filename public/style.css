@@ -1,3 +1,221 @@
-h2,h1,text {
-   font-family: 'Montserrat', sans-serif;
+:root {
+   --main-color : #FF8F8F;
+   --background-color: #FFFFFF;
+   --gray-1 : #ECECEC;
+   --gray-2 : #DDDDDD;
+   --gray-3 : #C6C6C6;
+   --font-color: #878787;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+/* Topbar classes */
+
+.topbar {
+   padding: 1.4vh;
+   padding-left: 4vh;
+   flex-basis: 4vh;
+   background-color: var(--main-color);
+   display: flex;
+   justify-content: space-between;
+}
+
+.topbar h1 {
+   white-space: nowrap;
+   margin: 0;
+   margin-left: 30%;
+   font-family: 'Rubik', sans-serif;
+   font-weight: 400;
+   color: var(--background-color);
+   width: fit-content;
+   font-size: 3vh;
+}
+
+.app-icon {
+   display: flex;
+   align-items: center;
+}
+
+body {
+   margin: 0;
+   background-color: var(--background-color);
+   height: 100vh;
+   display: flex;
+   flex-direction: column;
+}
+
+.left-container {
+   display: flex;
+   flex-direction: row;
+   width: fit-content;
+}
+
+/* Sidebar classes */
+
+.sidebar {
+   flex-grow: 1;
+   padding-top: 2vh;
+   background-color: var(--gray-1);
+   border-right: 1px solid #D4D4D4;
+}
+
+.selector-container {
+   height: 4.3vh;
+   margin-bottom: 2vh;
+   display: grid;
+   grid-template-columns: 15% auto;   
+   background: #DDDDDD;
+   align-items: center;
+   padding-left: 1.5vh;
+}
+
+.selector-container:hover {
+   background: #D8D8D8;
+   cursor: pointer;
+}
+
+.selector-container h2 {
+   font-family: 'Rubik', sans-serif;
+   font-weight: 500;
+   color: var(--font-color);
+   margin: 0;
+   font-size: 2vh;
+}
+
+/* Logged info */
+
+.info-container {
+   width: 15vh;
+   padding: 0.5vh 0.5vh ;
+   font-family: 'Rubik';
+   color: var(--background-color);
+   font-size: 2vh;
+   display: grid;
+   align-items: center;
+   grid-template-columns: auto 30%;
+}
+
+.info-container img{
+   height: 4vh;
+   border-radius: 50%;
+}
+
+/* Loggin Button */
+
+.button-container {
+   background-color: white;
+   width: 14vh;
+   padding: 1vh 0.5vh 0.5vh 1vh;
+   font-family: "Roboto";
+   font-size: 1.3vh;
+   border-radius: 2px;
+   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.35);
+   display: grid;
+   grid-template-columns: 20% auto;
+   color: #404040;
+}
+
+.button-container:hover {
+   background-color: #4285F4;
+   color: white;
+   cursor: pointer;
+}
+
+.button-container img {
+   height:2vh;
+}
+
+/* Main frame */
+
+.main-frame {
+   flex-grow: 1;
+   display: flex;
+   flex-direction: row;
+}
+
+.content {
+   flex-grow: 6;
+}
+
+.content .container {
+   padding: 2.4vh 8vh 2vh 7vh;
+}
+
+.container h3 {
+   font-family: "Rubik", sans-serif;
+   font-style: normal;
+   font-weight: normal;
+   font-size: 1.4vh;
+}
+
+/* Tasks */
+
+.tasks {
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   overflow: scroll;
+   height: 100%;
+}
+
+.task {
+   display: grid;
+   grid-template-columns: 5% auto;
+   font-family: 'Rubik';
+   font-size: 2vh;
+   color: #878787;
+   border-bottom: 2px solid #C6C6C6;
+   margin-bottom: 2vh;
+   padding-bottom: 1vh;
+   align-items: center;
+}
+
+.tasks::-webkit-scrollbar {
+   display: none;
+}
+
+.check {
+   justify-self: center;
+   border-radius: 50%;
+   height: 1.8vh;
+   width: 1.8vh;
+   border: 2px solid var(--main-color);
+}
+
+.check:hover {
+   background-color: #FFB9B9;
+   cursor: pointer;
+}
+
+.check:active {
+   background-color: #FF8F8F;
+}
+
+
+.add-task {
+   display: grid;
+   grid-template-columns: 5% auto;
+   
+   
+   border-bottom: 2px solid #C6C6C6;
+   margin-bottom: 2vh;
+   padding-bottom: 1vh;
+   align-items: center;
+}
+
+.add-task input, .add-task input::placeholder {
+   color: var(--main-color);
+   font-family: 'Rubik';
+   font-size: 2vh;
+   border: none;
+}
+
+.add-task input:focus {
+   outline: none;
+}
+
+
+.add-task img {
+   height: 1.8vh;
+   justify-self: center;
 }
