@@ -5,6 +5,7 @@
    --gray-2 : #DDDDDD;
    --gray-3 : #C6C6C6;
    --font-color: #878787;
+   --n-columns: 6;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
@@ -138,6 +139,7 @@ body {
 }
 
 .content .container {
+   height: 90%;
    padding: 2.4vh 8vh 2vh 7vh;
 }
 
@@ -218,4 +220,72 @@ body {
 .add-task img {
    height: 1.8vh;
    justify-self: center;
+}
+
+/* Calendar */
+
+.day {
+   display: flex;
+   flex-direction: column;
+   overflow: scroll;
+   border-top: 2px solid #878787;
+   border-right: 2px solid #878787;
+   border-bottom: 2px solid #878787;
+}
+
+.day:nth-of-type(1) {
+   border-left: 2px solid #878787;
+}
+
+.day::-webkit-scrollbar {
+   display: none;
+}
+
+.days {
+   display: grid;
+   height: 100%;
+   grid-template-columns:repeat(5, 20%);
+   grid-template-rows: 10% 90%;
+   font-family: 'Rubik';
+   font-weight: 200;
+   font-size: 2vh;
+   color: #878787;
+}
+
+.days h4 {
+   text-align: center;
+}
+
+.calendar-task {
+   position: relative;
+   font-family: 'Rubik';
+   font-size: 1.8vh;
+   font-weight: 400;
+   text-align: center;
+   height: min-content;
+   padding: 2vh 1vh;
+   border-bottom: 2px solid #878787;
+}
+
+
+
+.calendar-task img{
+   width: 3vh;
+}
+
+.day input, .day input::placeholder{
+   color: var(--main-color);
+   font-family: 'Rubik';
+   font-size: 2vh;
+   border: none;
+   outline: none;
+   max-width: 80%;
+}
+
+.delete-calendar-task {
+   position: absolute;
+   right: 10px;
+   top: 2px;
+   cursor: pointer;
+   color: var(--main-color);
 }

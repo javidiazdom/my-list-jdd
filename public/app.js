@@ -11,6 +11,8 @@ document.addEventListener("DOMContentLoaded", event => {
    })
 })
 
+const weekdays = ['L','M','X','J','V']
+
 function showTasks() {
    function getTasks (user) {
       let db  = firebase.firestore()
@@ -75,6 +77,68 @@ function showTasks() {
    }
 }
 
+function showCalendar() {
+   document.getElementById("content").innerHTML = "<div id = 'container' class = 'container'><div id = 'days' class = 'days'></div><div id = 'calendar' class = 'calendar'></div></div>"
+   weekdays.forEach((day) => {
+      document.getElementById('days').innerHTML += "<h4>" + day + "</h4>"
+   })
+   weekdays.forEach((day) => {
+      document.getElementById('days').innerHTML += "<div id = " + day + " class = 'day'></div>"
+   })
+   getCalendarSchedule()
+}
+
+function addCalendarTask (day) {
+   document.getElementById("add-calendar-task-"+day.id).innerHTML = "<input id = 'calendar-task-name' placeholder = 'Añadir Tarea'>"
+   document.getElementById('calendar-task-name').addEventListener("keydown", (press) => {
+      if (press.keyCode == 13) {
+         let name = document.getElementById('calendar-task-name').value
+         let db = firebase.firestore()
+         let setDoc = db.collection('calendar').doc(firebase.auth().currentUser.email+'-'+day.id+'-'+name).set({
+            name: name,
+            email: firebase.auth().currentUser.email,
+            day: day.id,
+            created: firebase.firestore.Timestamp.now()
+         })
+         setDoc.then((result) => {
+            showCalendar()
+         })
+      }
+   })
+}
+
+function deleteCalendarTask (task,day) {
+   let db = firebase.firestore()
+   db.collection('calendar').doc(firebase.auth().currentUser.email + '-' + day + '-' + task).delete().then(() => {
+      showCalendar()
+   })
+}
+
+function getCalendarSchedule() {
+   let db = firebase.firestore()
+   let user = firebase.auth().currentUser
+   weekdays.forEach((day) => {
+      let tasks = db.collection('calendar').where('email','==', user.email).where('day','==',day).get()
+      tasks.then(result => {
+         docsres = result.docs
+         docsres.sort((a,b) => {
+            if (a.data().created.seconds < b.data().created.seconds) {
+               return -1
+            } else {
+               if (a.data().created.seconds == b.data().created.seconds) {
+                  return 0
+               }
+               return 1
+            }
+         })
+         docsres.forEach(element => {
+            document.getElementById(day).innerHTML += "<div class = 'calendar-task' id = "+element.data().name+">"+element.data().name+"<div class = 'delete-calendar-task' id = 'delete-calendar-task' onclick = \"deleteCalendarTask('"+element.data().name+"','"+element.data().day+"')\">x</div></div>"
+         })
+         document.getElementById(day).innerHTML += "<div class = 'calendar-task' id = 'add-calendar-task-"+day+"'><img src= 'assets/Cross.png' onclick = addCalendarTask(" + day + ")></div>"
+      })
+   })
+}
+
 function addTask (name, email) {
    let newTask = {
       name : name,
@@ -91,9 +155,6 @@ function removeTask (name, email) {
    })
 }
 
-function showCalendar() {
-
-}
 
 
 // Login stuff
